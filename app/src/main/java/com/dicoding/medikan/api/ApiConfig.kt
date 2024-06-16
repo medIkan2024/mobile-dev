@@ -22,6 +22,7 @@ interface APIConfig {
 
     companion object {
         val BASE_URL = "https://web-service-dot-medikan.et.r.appspot.com/"
+        val new_URl = ""
 
         fun build(token: String = ""): APIConfig {
             val interceptor = HttpLoggingInterceptor()
