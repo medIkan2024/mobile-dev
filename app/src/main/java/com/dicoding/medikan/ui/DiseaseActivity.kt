@@ -151,7 +151,7 @@ class DiseaseActivity : AppCompatActivity() {
         createCustomTempFile(application).also {
             val photoURI: Uri = FileProvider.getUriForFile(
                 this,
-                "com.faishalbadri.penyakitikan",
+                "com.dicoding.medikan",
                 it
             )
             currentPhotoPath = it.absolutePath
