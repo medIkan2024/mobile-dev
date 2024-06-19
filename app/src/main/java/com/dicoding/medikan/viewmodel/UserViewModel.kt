@@ -4,11 +4,14 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.dicoding.medikan.api.APIConfig
 import com.dicoding.medikan.data.SessionData
 import com.dicoding.medikan.data.user.UserResponse
+import com.dicoding.medikan.util.UserPreferences
 import com.dicoding.medikan.viewmodel.base.Event
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
 import retrofit2.Call

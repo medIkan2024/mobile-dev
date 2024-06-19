@@ -1,21 +1,58 @@
 package com.dicoding.medikan.ui
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.dicoding.medikan.R
+import com.bumptech.glide.Glide
+import com.dicoding.medikan.databinding.ActivityDetailHistoryBinding
 
 class DetailHistoryActivity : AppCompatActivity() {
+
+    private val onBackPressedCallback: OnBackPressedCallback =
+        object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                finish()
+            }
+        }
+
+    private var _binding: ActivityDetailHistoryBinding? = null
+    val binding get() = _binding!!
+    private var treatmentString = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_detail_history)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+        _binding = ActivityDetailHistoryBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.apply {
+            bar.btnBack.setOnClickListener {
+                onBackPressedCallback.handleOnBackPressed()
+            }
+
+            Glide.with(this@DetailHistoryActivity).load(getDataIntent("image")).centerCrop().into(imgDetail)
+
+            if (getDataIntent("treatment").length > 0) {
+                val treatment = getDataIntent("treatment").split(",")
+                treatment.forEachIndexed { index, element ->
+                    if (index == 0) {
+                        treatmentString = treatmentString + "\n\n \u2022 ${element}"
+                    } else {
+                        treatmentString = treatmentString + "\n \u2022 ${element}"
+                    }
+                }
+            } else {
+                treatmentString = getDataIntent("treatment")
+            }
+
+            txtHistory.text = getDataIntent("historyName")
+            txtHistoryCreated.text = getDataIntent("createdAt")
+            txtDisease.text = getDataIntent("name")
+            txtDescription.text = getDataIntent("description") + treatmentString
         }
+    }
+
+    fun getDataIntent(string: String): String {
+        return intent.getStringExtra(string).toString()
     }
 }

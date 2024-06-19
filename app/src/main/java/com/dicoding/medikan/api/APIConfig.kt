@@ -1,6 +1,8 @@
 package com.dicoding.medikan.api
 
 import com.dicoding.medikan.data.disease.DiseaseResponse
+import com.dicoding.medikan.data.history.HistoryResponse
+import com.dicoding.medikan.data.user.UserResponse
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

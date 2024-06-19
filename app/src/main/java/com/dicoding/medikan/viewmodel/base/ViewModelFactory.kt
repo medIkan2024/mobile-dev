@@ -3,6 +3,9 @@ package com.dicoding.medikan.viewmodel.base
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.dicoding.medikan.util.UserPreferences
+import com.dicoding.medikan.viewmodel.DiseaseViewModel
+import com.dicoding.medikan.viewmodel.UserViewModel
 
 class ViewModelFactory(private val userPreferences: UserPreferences) : ViewModelProvider.NewInstanceFactory() {
 

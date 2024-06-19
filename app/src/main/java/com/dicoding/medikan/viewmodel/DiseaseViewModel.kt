@@ -9,7 +9,9 @@ import com.dicoding.medikan.api.APIConfig
 import com.dicoding.medikan.data.disease.DiseaseResponse
 import com.dicoding.medikan.data.history.HistoryItem
 import com.dicoding.medikan.data.history.HistoryResponse
+import com.dicoding.medikan.util.UserPreferences
 import com.dicoding.medikan.viewmodel.base.Event
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import okhttp3.MultipartBody
 import retrofit2.Call

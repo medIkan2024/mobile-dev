@@ -9,6 +9,7 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.dicoding.medikan.data.SessionData
+import com.dicoding.medikan.ui.LoginActivity
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
